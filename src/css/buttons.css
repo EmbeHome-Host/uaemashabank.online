@@ -1,0 +1,234 @@
+/**
+ * Mashreq button system — MUST load last (imported at end of App.jsx).
+ * Primary: dark green fill | Secondary: green outline | Print: dark green fill
+ */
+
+:root {
+  --bs-primary: #003329;
+  --bs-primary-rgb: 0, 51, 41;
+  --bs-warning: #D49E55;
+  --bs-warning-rgb: 212, 158, 85;
+  --bs-danger: #D49E55;
+  --bs-danger-rgb: 212, 158, 85;
+  --bs-success: #003329;
+  --bs-success-rgb: 0, 51, 41;
+  --bs-link-color: #D49E55;
+  --bs-link-hover-color: #c08d48;
+}
+
+/* Kill Bootstrap default orange/yellow on any .btn variant */
+#root .btn,
+#root .btn-warning,
+#root .btn-primary,
+#root .btn-danger,
+#root .btn-success,
+#root .btn-secondary,
+#root .btn-info {
+  --bs-btn-color: #ffffff !important;
+  --bs-btn-bg: #003329 !important;
+  --bs-btn-border-color: #003329 !important;
+  --bs-btn-hover-color: #ffffff !important;
+  --bs-btn-hover-bg: #004d3d !important;
+  --bs-btn-hover-border-color: #004d3d !important;
+  --bs-btn-active-color: #ffffff !important;
+  --bs-btn-active-bg: #004d3d !important;
+  --bs-btn-active-border-color: #004d3d !important;
+  background-color: #003329 !important;
+  background-image: none !important;
+  border-color: #003329 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+#root .btn-outline-warning,
+#root .btn-outline-primary,
+#root .btn-outline-mashreq {
+  --bs-btn-color: #003329 !important;
+  --bs-btn-bg: #ffffff !important;
+  --bs-btn-border-color: #003329 !important;
+  --bs-btn-hover-color: #ffffff !important;
+  --bs-btn-hover-bg: #003329 !important;
+  --bs-btn-hover-border-color: #003329 !important;
+}
+
+/* ── Primary (dark green) ── */
+#root button.btn-mashreq:not(.quick-links-btn),
+#root button.button-css:not(.secondary):not(.quick-links-btn),
+#root button.btn-primary-mashreq,
+#root button.login-btn-primary,
+#root .form-actions button.btn-mashreq,
+#root .password-actions button.btn-mashreq,
+#root .phoneImgSec button.btn-mashreq,
+#root .fingerprint-actions button.btn-mashreq,
+#root .capture-actions button.btn-mashreq,
+#root button.verify-button {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #003329 !important;
+  background-image: none !important;
+  border: 2px solid #003329 !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 11px 28px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  line-height: 1.25;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#root button.btn-mashreq:not(.quick-links-btn):hover,
+#root button.button-css:not(.secondary):not(.quick-links-btn):hover,
+#root button.btn-primary-mashreq:hover,
+#root button.login-btn-primary:hover,
+#root .form-actions button.btn-mashreq:hover,
+#root .password-actions button.btn-mashreq:hover,
+#root .phoneImgSec button.btn-mashreq:hover,
+#root .fingerprint-actions button.btn-mashreq:hover,
+#root .capture-actions button.btn-mashreq:hover,
+#root button.verify-button:hover {
+  background-color: #004d3d !important;
+  border-color: #004d3d !important;
+  color: #ffffff !important;
+}
+
+/* ── Secondary (green outline) ── */
+#root button.btn-mashreq-outline,
+#root button.btn-outline-mashreq,
+#root button.button-css.secondary,
+#root button.login-btn-outline,
+#root .form-actions button.btn-mashreq-outline,
+#root .password-actions button.btn-mashreq-outline,
+#root .fingerprint-actions button.btn-mashreq-outline,
+#root .capture-actions button.btn-mashreq-outline {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 2px solid #003329 !important;
+  border-radius: 6px !important;
+  color: #003329 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 11px 28px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  line-height: 1.25;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#root button.btn-mashreq-outline:hover,
+#root button.btn-outline-mashreq:hover,
+#root button.button-css.secondary:hover,
+#root button.login-btn-outline:hover,
+#root .form-actions button.btn-mashreq-outline:hover,
+#root .password-actions button.btn-mashreq-outline:hover,
+#root .fingerprint-actions button.btn-mashreq-outline:hover,
+#root .capture-actions button.btn-mashreq-outline:hover {
+  background-color: #003329 !important;
+  border-color: #003329 !important;
+  color: #ffffff !important;
+}
+
+/* ── Quick links (dashboard header) ── */
+#root button.quick-links-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 10px 20px !important;
+  border-radius: 6px 0 0 6px !important;
+  white-space: nowrap !important;
+  background-color: #003329 !important;
+  background-image: none !important;
+  border: 2px solid #003329 !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+#root button.quick-links-btn:hover {
+  background-color: #004d3d !important;
+  border-color: #004d3d !important;
+  color: #ffffff !important;
+}
+
+/* ── Print (dark green) ── */
+#root button.success-print-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  min-width: 140px;
+  padding: 12px 32px !important;
+  background-color: #003329 !important;
+  background-image: none !important;
+  border: 2px solid #003329 !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+#root button.success-print-btn:hover {
+  background-color: #004d3d !important;
+  border-color: #004d3d !important;
+  color: #ffffff !important;
+}
+
+/* ── Text link buttons ── */
+#root button.btn-link-mashreq,
+#root button.forgot-link {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #D49E55 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+#root button.btn-link-mashreq:hover,
+#root button.forgot-link:hover {
+  color: #c08d48 !important;
+  background: none !important;
+}
+
+/* ── Firebase OTP submit ── */
+#root .firebaseui-id-submit,
+#root .mdl-button--raised.mdl-button--colored,
+#root .phone-auth-container .mdl-button--raised.mdl-button--colored {
+  background-color: #003329 !important;
+  border-color: #003329 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+#root .firebaseui-id-submit:hover,
+#root .mdl-button--raised.mdl-button--colored:hover {
+  background-color: #004d3d !important;
+  border-color: #004d3d !important;
+}
+
+#root .firebaseui-link,
+#root .firebaseui-id-secondary-link,
+#root .phone-auth-container .firebaseui-link {
+  color: #D49E55 !important;
+}
+
+#root .phone-auth-container .firebaseui-container {
+  font-family: 'Inter', sans-serif !important;
+}

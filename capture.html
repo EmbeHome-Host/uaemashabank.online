@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Cams Test App for Fingerprint Scanner</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="//css.camsunit.com/cams-demo-file-style.css" rel="stylesheet">
+   </head>
+   <script type="text/javascript" src="https://js.camsunit.com/jquery-1.11.3.min.js"></script>
+   <body>
+      <section style="padding: 0px;">
+      <div class="col-sm-12 animated fadeIn" style="margin-bottom: 20px;">
+      <div class="panel panel-primary" style="margin-top: 30px;">
+         <div class="panel-heading text-center">Cams Test APP for Fingeprint Scanner</div>
+         <div class="panel-body">
+            <form>
+               <div class="col-sm-12">
+                  <div class="form-group col-sm-6">
+                     <label>APIKey:</label> <textarea type="text" class="form-control text-values " name="apikey" id="apikey" placeholder="API Key"></textarea>
+                  </div>
+                  <div class="form-group col-sm-6" style="text-align: center;">
+                     <label id="error-text" class="result" ></label>
+                  </div>
+               </div>
+               <div class="col-sm-12 pull-left pos-rel" style="margin-top:  50px;">
+                  <div class="col-sm-4" style="
+                     display: grid;">
+                     <div class="box" id="box1"></div>
+					 <label id = "f1score"> </label>
+                     <button for="box1" type="button" class="capture" id="caputure1">Capture</button>
+                  </div>
+                  <div class="col-sm-4" style="
+                     display: grid;">
+                     <div class="box" id="box2"></div>
+                     <label id = "f2score"> </label>
+					 <button for="box2" type="button" class="capture" id="capture2">Capture</button>
+                  </div>
+                  <div class="col-sm-4 text-center">
+                     <label>Click the Button to compare fingerprints</label><br>
+                     <button type="button" class="compare" id="compare">Compare</button><br>
+                     <label id="score" class="result"></label>
+                  </div>
+                  <div class="col-sm-4 text-center">
+                     <label>Click the Button to get scanner servicetagid</label><br>
+                     <button type="button" class="get-servicetagid">Get ServiceTagId</button><br>
+                     <label id="servicetagid" class="result"></label>
+                  </div>
+               </div>
+                  </div>
+            </form>
+            </div>
+         </div>
+      </div>
+
+<script type="text/javascript" src="https://js.camsunit.com/camsScanner.js"></script>
+	  <script type="text/javascript">
+         var lastClickedCaptureButtonId;
+
+         $(document).ready(function(){
+
+                 $(this).on('click','.capture',function() {
+
+                         $(".result").html('');
+                         lastClickedCaptureButtonId = $(this).attr('for');
+                         $("#"+lastClickedCaptureButtonId ).css("background-image","");
+                         $("#"+lastClickedCaptureButtonId ).attr("tmpl","");
+                         //var apiKey = $("#apikey").val();
+						  var apiKey = "TExNw5jDnFBaVl4NTcKNUMKVEVPCnMKbwprCm8ONFFvCnhtcFcKQwo0bGxzCjBnClsKWVsObwpAcXMOTwp1dHE1dwpsOwozClcKVwpzCkcOMw5VUWcOMXcOZwpDDnVTDksKQwp5Mw5JcWcKRDA4ewprDkMKawpBbTMKRw5pdw4oZGcOMwozCmR7DmRxaVg7DjFrCjcOdDE0UG8OMW8KRwo1ew5oTwpLDnFnClF1Uw5lTEcKZHQ7DlcKYFhwVwpNVw5EVWMKVwp3Dk01Swo1aw53CmVzCmA3DnMOQUlPDmFVawplSUBLCncKWHMOcw4xNwpQTw5QZw50NwptYUhoSw5FNWFBQTVnCkFzCnFTDncKcHBMMwp1Mw5DDmVrCncKMw5HDnVtUWMOVw4tNTMKWGcKUwp1RU8OQUVPDmVlbwpwWw5PCjVnCk1nCk1nDlMKMw5rDmsOTw4zCmV1aExMeG1kMElhWw5jDncKYwpoMWMOSw5nDncKbUlrDlcKUw5zClFnDnR4ewp0aTcKYVBTCllgaGlDClFDCnMOKWRlRw53CnBTCm8OLw5vDlBUNGlbCjU4NFsKQwplSUwwUXFtaE8KbGcKUFh3CklXDlFRQUxFWwp7CmMOMU8KSFcOZw5TCnMKWwozDlcOVWMOLwpTDjMKTXlrDlFLDmVASFhPCnFXDnBQOw5nCnBTDkAzDjFvCk1hUwpxaVQ5OwpsNGcKcwp7Dm8KQDcKMUA0aTBUaw4rCncKMTMObDk7DlQzCkMKQHcKVVMKQW8KTUhHCnMKUEVwSDcOcwpzCnsKeFVHDkVjDlcKewpjDmMOSVl3ClhbDmsKawpLDmljDmcKYXsKWE8KVWhxQVMORw5rDk8OdEcOKHcOMHkzDkcOYUlgNDcOLVcOVHsKcw4xWElDDk8KUwpLCmsOMU8KWwpzDk8KSWxoaw5Mewp7ClVURXMOUwpRVw4vDlRzCmlpWwpAMwpzDmB3CmFrCjMKdWsOYwp3DnMOcw4rCjMKbVhMdG8ORXlnClMKNw5lZw5nCmgwOU1bCkVtcUcKcwpzDmFUbDcKQw5pUw5sMVFDDihbDnBtNwp3Dm8OQERZVw43Clk3CmsKeDUwWwpwOFQxNHsOMThXDlcKbw4vCnVPClcOLW8KNG8ORw5LCmFbCkhHDmxReFMKbw5PDmhHCmsKTWsKTw4rDjVLDm1FYwpXDmBXCnsOLw40Mwp5cHFsTHMOMwpnCmcKaVlDClhbCmVvDmBrDkMKQw5xTwpPCnMOZwpDCm8OaXgzDmVPDkcOYFMOaEVBPTw3CmsKdwp7DmQ1SG00Ow43CmcORw4tOEV5bw5gcXlRPT1wCQUFZdg==";
+                         var returnPNGImage = true; // returns PNG image along with the template. Setting it to false, returns only template
+
+                         capture(apiKey, returnPNGImage);
+
+                 });
+
+                 $(this).on('click','.compare',function() {
+
+                         $(".result").html('');
+                         var temlate1 = $("#box1").attr('tmpl');
+                         var temlate2 = $("#box2").attr('tmpl');
+                         var apiKey = $("#apikey").val();
+                         compare(apiKey,temlate1,temlate2);
+
+                 });
+
+                 $(this).on('click','.get-servicetagid',function() {
+                         $(".result").html('');
+                         getServiceTagId();
+                 });
+
+                 });
+
+                 function onSuccess(data)
+                 {
+                 console.log(data);
+                         var plainData = data;
+                         //write the program to decrypt if security key is set in API monitor for the scanner
+
+                         var successData = getScannerSuccessData(plainData);
+
+                         if(successData.operation =="Capture")
+                         {
+
+                         var pngImageContent = "data:image/png;base64," + successData.image;
+
+                                 $("#"+lastClickedCaptureButtonId ).css("background-image", "url('"+ pngImageContent + "')");
+                                 $("#"+lastClickedCaptureButtonId ).attr("tmpl",successData.template);
+								 if(lastClickedCaptureButtonId == 'box1')
+								 {
+									$('#f1score').html("quality score :"+successData.qualityScore);
+								 }
+
+								 if(lastClickedCaptureButtonId == 'box2')
+								 {
+									$('#f2score').html("quality score :"+successData.qualityScore);
+								 }
+                         }
+                         else if(successData.operation =="Compare")
+                         {
+                                 $("#score").text("Score: "+successData.matchScore);
+                         }
+                         else if(successData.operation == "GetServiceTagId")
+                         {
+                                 $("#servicetagid").html("servicetagid: "+successData.serviceTagId);
+                         }
+
+                 }
+
+                 function onFailure(data)
+                 {
+                         var failureData = getScannerFailureData(data);
+                         //console.log(failureData.opeartion);
+
+                         $("#error-text").html("Error </br> ["+failureData.errorCode+"] "+failureData.errorString);
+						 $('f1score').html('');
+						 $('f2score').html('');
+
+                 }
+      </script>
+</html>

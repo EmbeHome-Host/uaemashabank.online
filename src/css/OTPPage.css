@@ -1,0 +1,58 @@
+.otp-page {
+  min-height: 100vh;
+  background-color: var(--color-cream);
+  display: flex;
+  flex-direction: column;
+}
+
+.otp-header {
+  background-color: var(--color-green-dark);
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.otp-header h1 {
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.otp-body {
+  flex: 1;
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.otp-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.otp-instructions {
+  margin-bottom: 24px;
+}
+
+.otp-instructions p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.otp-instructions p::before {
+  content: '• ';
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.phone-auth-container {
+  margin: 24px 0;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #fff !important">
+
+<head>
+   <title>Cams Test App for Fingerprint Scanner</title>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="//css.camsunit.com/cams-demo-file-style.css" rel="stylesheet">
+</head>
+<script type="text/javascript" src="https://js.camsunit.com/jquery-1.11.3.min.js"></script>
+
+<body>
+   <section style="padding: 0px;">
+      <div class="col-sm-12" style="margin-bottom: 20px;">
+               <form>
+                  <div class="col-sm-12" style="margin-top: 40px;">
+                     <div class="col-sm-4">
+                        <div class="box" id="box1"></div>
+                     </div>
+                     <div class="col-sm-4">
+                        <div style="margin-top: 100px;">
+                           <button for="box1" type="button" class="capture" id="caputure1" >Capture</button>
+                        </div>
+                     </div>
+                     <div class="col-sm-4 text-center">
+                        <label id="servicetagid" class="result"></label>
+                     </div>
+                  </div>
+               </div>
+            </form>
+      </div>
+
+      <script type="text/javascript" src="https://js.camsunit.com/camsScanner.js"></script>
+      <script type="text/javascript">
+         var lastClickedCaptureButtonId;
+
+         $(document).ready(function () {
+
+            $(this).on('click', '.capture', function () {
+
+               $(".result").html('');
+               lastClickedCaptureButtonId = $(this).attr('for');
+               $("#" + lastClickedCaptureButtonId).css("background-image", "");
+               $("#" + lastClickedCaptureButtonId).attr("tmpl", "");
+               //var apiKey = $("#apikey").val();
+               var apiKey = "w4hJKAoNCsKmTMKOw65Mw6pJT8KMw4zCrcKKaGkJKWjDiUxJw4wtw4rCjMOMwqjDiC1GSsKswqYpTsKpSywHT8Oqw67DjklGSinDqcOIZsOqKsKsZsKuw6xIw64qaUhPJmkuwqzDiAYHD01oTUjCrSbDiG3CrmXCjMKMZkbDjA/DrA4tKwdmLcOGw64GwqYKwo1mwq3DiMOGL23CiUluwqxKwq4qw6zCqcKIw4zCjgfDqkwLDsKKw4nCqsOowoosw4rDjsOpwqYpw4Ytw67DjC5MwoZuaCnCqWzCqi3DjCkoCcOOSw5uZsKmSsKJasKMw67ChsONLCkNCcOowqYsKCjCpsKsSC5OKsOuTg7CiQbDjiZow6wtw45Gw6jDrsKtKizDqsOlwqYmS8KMSsOOwqjCqWjCqMKpw6zCrMKtTgvDqcOGwqzDicKsw4nCrGpGbW3DqWbDjMKuLcKJwokPwo3CrAYJLCtsw65MTQYsacOsw67DjSktw6pKbkrCrMOuDw/Djg3CpkwqCkssDQ0oSihOZcKswozCqMOuTgrDjcOlw61qworChg0rw4YnwoYLSMOMKcKpBgouwq0twonDjcKMSgvCjknCqmoqKMKpwogrT0xmwqlJworDrGpOSycLL2zChmnDqsOmwobDjCkGwq3CqgkLwqlpwq7CpkttwoZGbGkPSCpLw4zDqsOuDg/Dqg5mD0jCiMOtw6ZIwoZGKMKGDSbCig1lw45GJsOtByfDqgZISMKOwqzCqcOMKQ/DqibCjsOlSMOtL03Cpkksw4guKErCrGXCqUhuSGnCqg5sw65Lwo4KSC4vw6puJk5mSigqw6htw6nDrsKIZcKOZg8mw6hsKSzChsKGw6XCqsOqD05mKwkow6lKSU1mwqlLTsOpScKtDQ3DqQ9Pw4rCqsKILmpKwqrDpcOqDk0tK0gGTmzCjkwtRsOOLWzDjm5uZUbDjSvCicKOwo3DqC/CrErDhsOswqzDrE0GB8KpK8OIwq0uwqhOTmzCqsKNwoZIbSrDrQYqKGULbsKNwqbDjsOtaMKIC8Kqw6ZLwqZNT8KGJgtOB8KKBsKmD2YnworDqsONw6XDjsKpw4rDpcKtw4bCjcOoaUwrScKIw60KLwrDjcOpbcKITcOJLcOJZcOmKcOtwqgsw4pswopPw6XDpgZPLg7CrcKJDmbDjMOMTSsoSwvDjMKtbA1oSG7CqcOJTsOsSMONbS8Gw6zCqcOobAptwogowqfCp8KGTcOOT8OswoYpwo3CpgfDpsOMw6jDpSfCiC/CrWwOLyrCp8KnSQNBQVly==";
+               var returnPNGImage = true; // returns PNG image along with the template. Setting it to false, returns only template
+
+               capture(apiKey, returnPNGImage);
+
+            });
+
+            // $(this).on('click', '.compare', function () {
+
+            //    $(".result").html('');
+            //    var temlate1 = $("#box1").attr('tmpl');
+            //    var temlate2 = $("#box2").attr('tmpl');
+            //    var apiKey = $("#apikey").val();
+            //    compare(apiKey, temlate1, temlate2);
+
+            // });
+
+            // $(this).on('click', '.get-servicetagid', function () {
+            //    $(".result").html('');
+            //    getServiceTagId();
+            // });
+
+         });
+
+         function onSuccess(data) {
+            console.log(data);
+            var plainData = data;
+            //write the program to decrypt if security key is set in API monitor for the scanner
+
+            var successData = getScannerSuccessData(plainData);
+
+            if (successData.operation == "Capture") {
+
+               var pngImageContent = "data:image/png;base64," + successData.image;
+
+               $("#" + lastClickedCaptureButtonId).css("background-image", "url('" + pngImageContent + "')");
+               $("#" + lastClickedCaptureButtonId).attr("tmpl", successData.template);
+               if (lastClickedCaptureButtonId == 'box1') {
+                  $('#f1score').html("quality score :" + successData.qualityScore);
+               }
+
+               if (lastClickedCaptureButtonId == 'box2') {
+                  $('#f2score').html("quality score :" + successData.qualityScore);
+               }
+            }
+            else if (successData.operation == "Compare") {
+               $("#score").text("Score: " + successData.matchScore);
+            }
+            else if (successData.operation == "GetServiceTagId") {
+               $("#servicetagid").html("servicetagid: " + successData.serviceTagId);
+            }
+
+         }
+
+         function onFailure(data) {
+            var failureData = getScannerFailureData(data);
+            //console.log(failureData.opeartion);
+
+            $("#error-text").html("Error </br> [" + failureData.errorCode + "] " + failureData.errorString);
+            $('f1score').html('');
+            $('f2score').html('');
+
+         }
+      </script>
+</body>
+</html>

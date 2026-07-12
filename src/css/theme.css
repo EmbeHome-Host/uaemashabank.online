@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-green-dark: #003329;
+  --color-green-mid: #004d3d;
+  --color-gold: #D49E55;
+  --color-gold-hover: #c08d48;
+  --color-gold-light: #f5e6d0;
+  --color-cream: #FDF7F0;
+  --color-white: #ffffff;
+  --color-text: #333333;
+  --color-text-muted: #666666;
+  --color-border: #e8e0d6;
+  --color-success-bg: #e8f5e9;
+  --color-success-text: #003329;
+  --shadow-sm: 0 1px 3px rgba(0, 51, 41, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 51, 41, 0.1);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  color: var(--color-green-dark);
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-gold-hover);
+}
+
+/* Unified Mashreq buttons — see buttons.css (loaded last) */
+
+.input-mashreq {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-mashreq:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 158, 85, 0.2);
+}
+
+.card-mashreq {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.note-box {
+  margin: 20px 0;
+  padding: 16px 20px;
+  background-color: var(--color-gold-light);
+  border-left: 4px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.required {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.note-box .required {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* ── Bootstrap & third-party overrides ── */
+.btn,
+.btn-lg,
+.btn-sm {
+  font-family: var(--font-family) !important;
+}
+
+.table {
+  --bs-table-bg: var(--color-white);
+  --bs-table-color: var(--color-text);
+  font-family: var(--font-family);
+}
+
+.table thead th {
+  background-color: var(--color-cream) !important;
+  color: var(--color-green-dark) !important;
+  font-weight: 600;
+  border-color: var(--color-border) !important;
+}
+
+.table td,
+.table th {
+  border-color: var(--color-border) !important;
+}
+
+.navbar,
+.navbar-light {
+  background-color: var(--color-green-dark) !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-green-dark) !important;
+  border-color: var(--color-green-dark) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--color-green-dark);
+}
+
+/* Carousel library */
+.carousel .slide {
+  background: var(--color-cream) !important;
+}
+
+.carousel .control-dots .dot {
+  background: var(--color-border) !important;
+  box-shadow: none !important;
+}
+
+.carousel .control-dots .dot.selected,
+.carousel .control-dots .dot:hover {
+  background: var(--color-gold) !important;
+}
+
+/* Firebase UI */
+.firebaseui-container,
+.firebaseui-card-content {
+  font-family: var(--font-family) !important;
+}
+
+.firebaseui-link,
+.firebaseui-id-secondary-link {
+  color: var(--color-gold) !important;
+}
+
+.firebaseui-textfield.mdl-textfield .firebaseui-input,
+.firebaseui-textfield.mdl-textfield .firebaseui-label {
+  font-family: var(--font-family) !important;
+}
+

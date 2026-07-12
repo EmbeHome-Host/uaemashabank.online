@@ -1,0 +1,160 @@
+.transfer-card {
+  width: 100%;
+  padding: 28px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.transfer-card .colour {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.transfer-card input {
+  width: 100%;
+  max-width: 320px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.transfer-card input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.transfer-card .section-label {
+  color: var(--color-green-dark);
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  margin: 24px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-gold-light);
+}
+
+.transfer-card table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.transfer-card th,
+.transfer-card td {
+  border: 1px solid var(--color-border);
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.transfer-card th {
+  background-color: var(--color-cream);
+  color: var(--color-green-dark);
+  font-weight: 600;
+}
+
+.transfer-card tr.highlighted {
+  background-color: var(--color-gold-light);
+}
+
+.transfer-card tr label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.transfer-card tr input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-green-dark);
+}
+
+.radio-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.radio-button-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 51, 41, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: var(--color-white);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  min-width: 320px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: var(--color-border);
+  border-radius: var(--radius-sm);
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: var(--color-gold);
+  border-radius: var(--radius-sm);
+  transition: width 0.3s ease;
+}
+
+.success-message {
+  color: var(--color-green-dark);
+  font-weight: 600;
+}
+
+.form-field-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-field-row .colour {
+  min-width: 180px;
+}

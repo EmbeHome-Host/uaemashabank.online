@@ -1,0 +1,27 @@
+.fingerprint-capture {
+  padding: 16px;
+  border: 1px solid #e8e0d6;
+  border-radius: 6px;
+  background: #FDF7F0;
+}
+
+.fingerprint-status {
+  font-size: 13px;
+  color: #666666;
+  margin: 0 0 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.fingerprint-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.fingerprint-preview {
+  max-width: 200px;
+  border: 1px solid #e8e0d6;
+  border-radius: 6px;
+  background: #ffffff;
+}
