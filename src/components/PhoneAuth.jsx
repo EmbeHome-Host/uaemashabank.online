@@ -2,27 +2,26 @@ import { useEffect } from 'react';
 import * as firebaseui from 'firebaseui';
 import '../css/OTPPage.css';
 import BrandLogo from './BrandLogo';
-import { auth } from '../firebase-config';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { compatAuth, firebase } from '../firebase-config';
 import 'firebaseui/dist/firebaseui.css';
 
 const PhoneAuth = () => {
   useEffect(() => {
-    // Set reCAPTCHA app verifier type to 'invisible'
+    // Set reCAPTCHA app verifier type to 'invisible' using compat Firebase
     if (typeof window !== 'undefined') {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
         size: 'invisible',
         callback: (token) => {
           console.log('reCAPTCHA token received');
         }
-      });
+      }, compatAuth);
     }
 
-    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(auth);
+    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(compatAuth);
     ui.start('.phone-auth-container', {
       signInOptions: [
         {
-          provider: 'phone',
+          provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
           defaultCountry: 'IN',
         }
       ],

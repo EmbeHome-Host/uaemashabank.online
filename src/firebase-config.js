@@ -1,5 +1,7 @@
 import { initializeApp, getApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyCcwLBIaDi7H0yAYA2OL40-WyfsSzNSlBo",
@@ -10,7 +12,15 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:899940462543:web:5d68abd3cd7fe7cf44ecba",
 };
 
+// Modular SDK for modern code
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export { app, auth };
+// Compat SDK for FirebaseUI compatibility
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+const compatApp = firebase.app();
+const compatAuth = firebase.auth();
+
+export { app, auth, compatApp, compatAuth, firebase };
