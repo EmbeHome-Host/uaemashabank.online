@@ -1,42 +1,46 @@
-import { useEffect } from 'react';
-import * as firebaseui from 'firebaseui';
-import '../css/OTPPage.css';
-import BrandLogo from './BrandLogo';
-import { compatAuth, firebase } from '../firebase-config';
-import 'firebaseui/dist/firebaseui.css';
+import {useEffect} from 'react'
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css'
+
+import '../css/OTPPage.css'
+import BrandLogo from './BrandLogo'
+import {compatAuth, firebase} from '../firebase-config'
 
 const PhoneAuth = () => {
   useEffect(() => {
-    // Set reCAPTCHA app verifier type to 'invisible' using compat Firebase
-    if (typeof window !== 'undefined') {
-      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-        size: 'invisible',
-        callback: (token) => {
-          console.log('reCAPTCHA token received');
-        }
-      }, compatAuth);
-    }
+    const ui =
+      firebaseui.auth.AuthUI.getInstance() ||
+      new firebaseui.auth.AuthUI(compatAuth)
 
-    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(compatAuth);
     ui.start('.phone-auth-container', {
+      signInFlow: 'popup',
+
       signInOptions: [
         {
           provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
           defaultCountry: 'IN',
-        }
+        },
       ],
-      signInSuccessUrl: "/dashboard",
+
+      callbacks: {
+        signInSuccessWithAuthResult: () => {
+          window.location.href = '/dashboard'
+          return false
+        },
+
+        uiShown: () => {
+          console.log('Firebase phone authentication loaded')
+        },
+      },
+
       privacyPolicyUrl: '/',
-      tosUrl: '/'
-    });
+      tosUrl: '/',
+    })
 
     return () => {
-      // Cleanup on unmount
-      if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.clear();
-      }
-    };
-  }, []);
+      ui.reset()
+    }
+  }, [])
 
   return (
     <div className="otp-page">
@@ -53,20 +57,23 @@ const PhoneAuth = () => {
           </div>
 
           <div className="phone-auth-container" />
-          <div id="recaptcha-container"></div>
 
           <div className="note-box">
             <p>
-              <span className="required">*</span> Please note that all communication related to Internet banking will be sent on your registered mobile number.
+              <span className="required">*</span> Please note that all
+              communication related to Internet banking will be sent to your
+              registered mobile number.
             </p>
+
             <p>
-              <span className="required">*</span> Mashreq Bank or any of its representatives never sends you email/SMS or calls you over phone to get your personal information, password or one time SMS (high security) password. Any such e-mail/SMS or phone call is an attempt to fraudulently withdraw money from your account. Never respond to such communication.
+              <span className="required">*</span> Never share your password or
+              one-time password with anyone.
             </p>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PhoneAuth;
+export default PhoneAuth
