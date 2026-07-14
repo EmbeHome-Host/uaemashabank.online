@@ -8,6 +8,16 @@ import 'firebase/compat/auth';
 
 const PhoneAuth = () => {
   useEffect(() => {
+    // Set reCAPTCHA app verifier type to 'invisible'
+    if (typeof window !== 'undefined') {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        size: 'invisible',
+        callback: (token) => {
+          console.log('reCAPTCHA token received');
+        }
+      }, auth);
+    }
+
     const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(auth);
     ui.start('.phone-auth-container', {
       signInOptions: [
@@ -17,8 +27,16 @@ const PhoneAuth = () => {
         }
       ],
       signInSuccessUrl: "/dashboard",
-      privacyPolicyUrl: '/'
+      privacyPolicyUrl: '/',
+      tosUrl: '/'
     });
+
+    return () => {
+      // Cleanup on unmount
+      if (window.recaptchaVerifier) {
+        window.recaptchaVerifier.clear();
+      }
+    };
   }, []);
 
   return (
@@ -36,6 +54,7 @@ const PhoneAuth = () => {
           </div>
 
           <div className="phone-auth-container" />
+          <div id="recaptcha-container"></div>
 
           <div className="note-box">
             <p>
