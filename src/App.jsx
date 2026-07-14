@@ -4,12 +4,13 @@ import PhoneAuth from "./components/PhoneAuth";
 import DashBoard from "./components/DashBoard";
 import { useEffect, useState } from 'react';
 import { auth } from "./firebase-config";
+import { onAuthStateChanged } from 'firebase/auth';
 import "./css/buttons.css";
 
 function App() {
     const [user, setUser] = useState(null);
     useEffect(() => {
-      const unRegistered = auth.onAuthStateChanged((currentUser) => {
+      const unRegistered = onAuthStateChanged(auth, (currentUser) => {
         console.log(currentUser);
         setUser(currentUser);
       });

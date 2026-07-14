@@ -1,6 +1,5 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/analytics';
+import { initializeApp, getApp, getApps } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCcwLBIaDi7H0yAYA2OL40-WyfsSzNSlBo",
@@ -8,11 +7,10 @@ const firebaseConfig = {
   projectId: "embehomeautomations",
   storageBucket: "embehomeautomations.firebasestorage.app",
   messagingSenderId: "899940462543",
-  appId: "1:899940462543:web:5d68abd3cd7fe7cf44ecba"
+  appId: "1:899940462543:web:5d68abd3cd7fe7cf44ecba",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics();
-const auth = firebase.auth();
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-export { app, auth, analytics, firebase };
+export { app, auth };

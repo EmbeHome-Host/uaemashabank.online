@@ -3,26 +3,26 @@ import * as firebaseui from 'firebaseui';
 import '../css/OTPPage.css';
 import BrandLogo from './BrandLogo';
 import { auth } from '../firebase-config';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import 'firebaseui/dist/firebaseui.css';
 
 const PhoneAuth = () => {
   useEffect(() => {
     // Set reCAPTCHA app verifier type to 'invisible'
     if (typeof window !== 'undefined') {
-      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         size: 'invisible',
         callback: (token) => {
           console.log('reCAPTCHA token received');
         }
-      }, auth);
+      });
     }
 
     const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(auth);
     ui.start('.phone-auth-container', {
       signInOptions: [
         {
-          provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+          provider: 'phone',
           defaultCountry: 'IN',
         }
       ],
