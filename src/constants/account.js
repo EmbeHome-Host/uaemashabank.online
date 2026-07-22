@@ -1,9 +1,9 @@
 export const ACCOUNT = {
   holderName: 'Krishna Sai Vinay Kumar Villas',
   accountType: 'Savings',
-  accountNumber: '000021001533',
-  branch: 'NIDADAVOLE',
-  balance: 18030000000,
+  accountNumber: 'xxxxxxxx1533',
+  branch: 'DUBAI',
+  balance: 12030000000,
 };
 
 /** Indian numbering: 18,03,00,00,000.00 */
